@@ -20,7 +20,7 @@ RDEPEND="${DEPEND}"
 BDEPEND=""
 
 src_install() {
-	dosym ${PN} /usr/bin/${PN}
+	dobin gibo
 
 	# Fish Completion
 	insinto /usr/share/fish/vendor_completions.d
