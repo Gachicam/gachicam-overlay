@@ -7,7 +7,7 @@ inherit optfeature
 
 DESCRIPTION="Bash scripts that integrate bat with various command line tools."
 HOMEPAGE="https://github.com/eth-p/bat-extras"
-SRC_URI="https://github.com/eth-p/bat-extras/archive/refs/tags/v2021.04.06.tar.gz"
+SRC_URI="https://github.com/eth-p/bat-extras/archive/refs/tags/v2021.04.06.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

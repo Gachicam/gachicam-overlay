@@ -5,8 +5,7 @@ EAPI=7
 
 DESCRIPTION="fast access to .gitignore boilerplates"
 HOMEPAGE="https://github.com/simonwhitaker/gibo"
-SRC_URI="https://github.com/simonwhitaker/gibo/archive/refs/tags/2.2.4.tar.gz"
-
+SRC_URI="https://github.com/simonwhitaker/gibo/archive/refs/tags/2.2.4.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Unlicense"
 SLOT="0"
