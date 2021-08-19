@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE repositories SYSTEM "http://www.gentoo.org/dtd/repositories.dtd">
+<repositories version="1.1" encoding="unicode">
+  <repo quality="experimental" status="unofficial">
+    <name>gachicam-overlay</name>
+    <description>Gentoo overlay</description>
+    <homepage>https://github.com/Gachicam/gachicam-overlay</homepage>
+    <owner>
+      <email>yamada.i.yt@gmail.com</email>
+      <name>Gachicam</name>
+    </owner>
+    <source type="git">git://github.com/Gachicam/gachicam-overlay.git</source>
+    <source type="http">https://github.com/Gachicam/gachicam-overlay.git</source>
+  </repo>
+</repositories>

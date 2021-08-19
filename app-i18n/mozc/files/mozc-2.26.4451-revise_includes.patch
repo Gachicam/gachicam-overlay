@@ -1,0 +1,192 @@
+diff --git a/src/unix/fcitx5/fcitx_key_event_handler.h b/src/unix/fcitx5/fcitx_key_event_handler.h
+index 3fd68047..bee325f2 100644
+--- a/src/unix/fcitx5/fcitx_key_event_handler.h
++++ b/src/unix/fcitx5/fcitx_key_event_handler.h
+@@ -31,7 +31,7 @@
+ #ifndef UNIX_FCITX5_FCITX_KEY_EVENT_HANDLER_H_
+ #define UNIX_FCITX5_FCITX_KEY_EVENT_HANDLER_H_
+ 
+-#include <fcitx-utils/key.h>
++#include <Fcitx5/Utils/fcitx-utils/key.h>
+ 
+ #include <memory>
+ #include <set>
+diff --git a/src/unix/fcitx5/fcitx_key_translator.h b/src/unix/fcitx5/fcitx_key_translator.h
+index 7f0cc411..ec1018aa 100644
+--- a/src/unix/fcitx5/fcitx_key_translator.h
++++ b/src/unix/fcitx5/fcitx_key_translator.h
+@@ -31,7 +31,7 @@
+ #ifndef UNIX_FCITX5_FCITX_KEY_TRANSLATOR_H_
+ #define UNIX_FCITX5_FCITX_KEY_TRANSLATOR_H_
+ 
+-#include <fcitx-utils/key.h>
++#include <Fcitx5/Utils/fcitx-utils/key.h>
+ 
+ #include <map>
+ #include <set>
+diff --git a/src/unix/fcitx5/mozc_engine.cc b/src/unix/fcitx5/mozc_engine.cc
+index 12c13643..b64ea373 100644
+--- a/src/unix/fcitx5/mozc_engine.cc
++++ b/src/unix/fcitx5/mozc_engine.cc
+@@ -19,14 +19,14 @@
+ 
+ #include "unix/fcitx5/mozc_engine.h"
+ 
+-#include <fcitx-config/iniparser.h>
+-#include <fcitx-utils/i18n.h>
+-#include <fcitx-utils/log.h>
+-#include <fcitx-utils/standardpath.h>
+-#include <fcitx/inputcontext.h>
+-#include <fcitx/inputcontextmanager.h>
+-#include <fcitx/inputmethodmanager.h>
+-#include <fcitx/userinterfacemanager.h>
++#include <Fcitx5/Config/fcitx-config/iniparser.h>
++#include <Fcitx5/Utils/fcitx-utils/i18n.h>
++#include <Fcitx5/Utils/fcitx-utils/log.h>
++#include <Fcitx5/Utils/fcitx-utils/standardpath.h>
++#include <Fcitx5/Core/fcitx/inputcontext.h>
++#include <Fcitx5/Core/fcitx/inputcontextmanager.h>
++#include <Fcitx5/Core/fcitx/inputmethodmanager.h>
++#include <Fcitx5/Core/fcitx/userinterfacemanager.h>
+ 
+ #include <vector>
+ 
+diff --git a/src/unix/fcitx5/mozc_engine.h b/src/unix/fcitx5/mozc_engine.h
+index 4d68f8f3..b4508821 100644
+--- a/src/unix/fcitx5/mozc_engine.h
++++ b/src/unix/fcitx5/mozc_engine.h
+@@ -19,17 +19,17 @@
+ #ifndef _FCITX_UNIX_FCITX5_MOZC_ENGINE_H_
+ #define _FCITX_UNIX_FCITX5_MOZC_ENGINE_H_
+ 
+-#include <fcitx-config/configuration.h>
+-#include <fcitx-config/enum.h>
+-#include <fcitx-utils/i18n.h>
+-#include <fcitx-utils/key.h>
+-#include <fcitx-utils/stringutils.h>
+-#include <fcitx/action.h>
+-#include <fcitx/addonfactory.h>
+-#include <fcitx/addonmanager.h>
+-#include <fcitx/inputmethodengine.h>
+-#include <fcitx/instance.h>
+-#include <fcitx/menu.h>
++#include <Fcitx5/Config/fcitx-config/configuration.h>
++#include <Fcitx5/Config/fcitx-config/enum.h>
++#include <Fcitx5/Utils/fcitx-utils/i18n.h>
++#include <Fcitx5/Utils/fcitx-utils/key.h>
++#include <Fcitx5/Utils/fcitx-utils/stringutils.h>
++#include <Fcitx5/Core/fcitx/action.h>
++#include <Fcitx5/Core/fcitx/addonfactory.h>
++#include <Fcitx5/Core/fcitx/addonmanager.h>
++#include <Fcitx5/Core/fcitx/inputmethodengine.h>
++#include <Fcitx5/Core/fcitx/instance.h>
++#include <Fcitx5/Core/fcitx/menu.h>
+ 
+ #include "base/file_util.h"
+ #include "base/system_util.h"
+diff --git a/src/unix/fcitx5/mozc_engine_factory.cc b/src/unix/fcitx5/mozc_engine_factory.cc
+index dc8316e4..c8637c7f 100644
+--- a/src/unix/fcitx5/mozc_engine_factory.cc
++++ b/src/unix/fcitx5/mozc_engine_factory.cc
+@@ -16,10 +16,10 @@
+  * License along with this library; see the file COPYING. If not,
+  * see <http://www.gnu.org/licenses/>.
+  */
+-#include <fcitx-utils/i18n.h>
+-#include <fcitx-utils/misc.h>
+-#include <fcitx-utils/stringutils.h>
+-#include <fcitx/addonfactory.h>
++#include <Fcitx5/Utils/fcitx-utils/i18n.h>
++#include <Fcitx5/Utils/fcitx-utils/misc.h>
++#include <Fcitx5/Utils/fcitx-utils/stringutils.h>
++#include <Fcitx5/Core/fcitx/addonfactory.h>
+ #include <stdlib.h>
+ 
+ #include <string_view>
+diff --git a/src/unix/fcitx5/mozc_response_parser.cc b/src/unix/fcitx5/mozc_response_parser.cc
+index 6665078c..c3be2ee8 100644
+--- a/src/unix/fcitx5/mozc_response_parser.cc
++++ b/src/unix/fcitx5/mozc_response_parser.cc
+@@ -30,11 +30,11 @@
+ 
+ #include "unix/fcitx5/mozc_response_parser.h"
+ 
+-#include <fcitx-utils/i18n.h>
+-#include <fcitx-utils/utf8.h>
+-#include <fcitx/candidatelist.h>
+-#include <fcitx/inputcontext.h>
+-#include <fcitx/inputpanel.h>
++#include <Fcitx5/Utils/fcitx-utils/i18n.h>
++#include <Fcitx5/Utils/fcitx-utils/utf8.h>
++#include <Fcitx5/Core/fcitx/candidatelist.h>
++#include <Fcitx5/Core/fcitx/inputcontext.h>
++#include <Fcitx5/Core/fcitx/inputpanel.h>
+ 
+ #include <string>
+ #include <vector>
+diff --git a/src/unix/fcitx5/mozc_state.cc b/src/unix/fcitx5/mozc_state.cc
+index 7f7a27e9..ff46939a 100644
+--- a/src/unix/fcitx5/mozc_state.cc
++++ b/src/unix/fcitx5/mozc_state.cc
+@@ -29,11 +29,11 @@
+ 
+ #include "unix/fcitx5/mozc_state.h"
+ 
+-#include <fcitx-utils/i18n.h>
+-#include <fcitx-utils/log.h>
+-#include <fcitx-utils/stringutils.h>
+-#include <fcitx/candidatelist.h>
+-#include <fcitx/inputpanel.h>
++#include <Fcitx5/Utils/fcitx-utils/i18n.h>
++#include <Fcitx5/Utils/fcitx-utils/log.h>
++#include <Fcitx5/Utils/fcitx-utils/stringutils.h>
++#include <Fcitx5/Core/fcitx/candidatelist.h>
++#include <Fcitx5/Core/fcitx/inputpanel.h>
+ 
+ #include <string>
+ 
+diff --git a/src/unix/fcitx5/mozc_state.h b/src/unix/fcitx5/mozc_state.h
+index cbcaff9a..635d230e 100644
+--- a/src/unix/fcitx5/mozc_state.h
++++ b/src/unix/fcitx5/mozc_state.h
+@@ -30,9 +30,9 @@
+ #ifndef MOZC_UNIX_FCITX_FCITX_MOZC_H_
+ #define MOZC_UNIX_FCITX_FCITX_MOZC_H_
+ 
+-#include <fcitx-utils/key.h>
+-#include <fcitx/inputcontextproperty.h>
+-#include <fcitx/text.h>
++#include <Fcitx5/Utils/fcitx-utils/key.h>
++#include <Fcitx5/Core/fcitx/inputcontextproperty.h>
++#include <Fcitx5/Core/fcitx/text.h>
+ 
+ #include <memory>
+ 
+diff --git a/src/unix/fcitx5/surrounding_text_util.cc b/src/unix/fcitx5/surrounding_text_util.cc
+index 76e8f11c..e748ccde 100644
+--- a/src/unix/fcitx5/surrounding_text_util.cc
++++ b/src/unix/fcitx5/surrounding_text_util.cc
+@@ -29,8 +29,8 @@
+ 
+ #include "unix/fcitx5/surrounding_text_util.h"
+ 
+-#include <fcitx-module/clipboard/clipboard_public.h>
+-#include <fcitx/inputcontext.h>
++#include <Fcitx5/Module/fcitx-module/clipboard/clipboard_public.h>
++#include <Fcitx5/Core/fcitx/inputcontext.h>
+ 
+ #include <limits>
+ #include <string>
+diff --git a/src/unix/fcitx5/surrounding_text_util.h b/src/unix/fcitx5/surrounding_text_util.h
+index eb6d27ea..60e168df 100644
+--- a/src/unix/fcitx5/surrounding_text_util.h
++++ b/src/unix/fcitx5/surrounding_text_util.h
+@@ -30,7 +30,7 @@
+ #ifndef MOZC_UNIX_FCITX_SURROUNDING_TEXT_URIL_H_
+ #define MOZC_UNIX_FCITX_SURROUNDING_TEXT_URIL_H_
+ 
+-#include <fcitx/inputcontext.h>
++#include <Fcitx5/Core/fcitx/inputcontext.h>
+ 
+ #include <string>
+ 

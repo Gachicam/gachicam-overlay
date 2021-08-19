@@ -1,0 +1,88 @@
+https://github.com/google/mozc/issues/470
+
+--- a/src/base/system_util.cc
++++ b/src/base/system_util.cc
+@@ -234,6 +234,11 @@ class LocalAppDataDirectoryCache {
+ 
+ std::string UserProfileDirectoryImpl::GetUserProfileDirectory() const {
+ #if defined(OS_CHROMEOS)
++  const char *configuration_directory_env = Environ::GetEnv("MOZC_CONFIGURATION_DIRECTORY");
++  if (configuration_directory_env) {
++    return configuration_directory_env;
++  }
++
+   // TODO(toka): Must use passed in user profile dir which passed in. If mojo
+   // platform the user profile is determined on runtime.
+   // It's hack, the user profile dir should be passed in. Although the value in
+@@ -251,6 +256,11 @@ std::string UserProfileDirectoryImpl::GetUserProfileDirectory() const {
+   return "";
+ 
+ #elif defined(OS_IOS)
++  const char *configuration_directory_env = Environ::GetEnv("MOZC_CONFIGURATION_DIRECTORY");
++  if (configuration_directory_env) {
++    return configuration_directory_env;
++  }
++
+   // OS_IOS block must be placed before __APPLE__ because both macros are
+   // currently defined on iOS.
+   //
+@@ -260,6 +270,11 @@ std::string UserProfileDirectoryImpl::GetUserProfileDirectory() const {
+   return FileUtil::JoinPath({MacUtil::GetCachesDirectory(), kProductPrefix});
+ 
+ #elif defined(OS_WIN)
++  const char *configuration_directory_env = Environ::GetEnv("MOZC_CONFIGURATION_DIRECTORY");
++  if (configuration_directory_env) {
++    return configuration_directory_env;
++  }
++
+   DCHECK(SUCCEEDED(Singleton<LocalAppDataDirectoryCache>::get()->result()));
+   std::string dir = Singleton<LocalAppDataDirectoryCache>::get()->path();
+ 
+@@ -270,6 +285,11 @@ std::string UserProfileDirectoryImpl::GetUserProfileDirectory() const {
+   return FileUtil::JoinPath(dir, kProductNameInEnglish);
+ 
+ #elif defined(__APPLE__)
++  const char *configuration_directory_env = Environ::GetEnv("MOZC_CONFIGURATION_DIRECTORY");
++  if (configuration_directory_env) {
++    return configuration_directory_env;
++  }
++
+   std::string dir = MacUtil::GetApplicationSupportDirectory();
+ #ifdef GOOGLE_JAPANESE_INPUT_BUILD
+   dir = FileUtil::JoinPath(dir, "Google");
+@@ -282,6 +302,11 @@ std::string UserProfileDirectoryImpl::GetUserProfileDirectory() const {
+ #endif  //  GOOGLE_JAPANESE_INPUT_BUILD
+ 
+ #elif defined(OS_LINUX)
++  const char *configuration_directory_env = Environ::GetEnv("MOZC_CONFIGURATION_DIRECTORY");
++  if (configuration_directory_env) {
++    return configuration_directory_env;
++  }
++
+   // 1. If "$HOME/.mozc" already exists,
+   //    use "$HOME/.mozc" for backward compatibility.
+   // 2. If $XDG_CONFIG_HOME is defined
+@@ -412,6 +437,11 @@ class ProgramFilesX86Cache {
+ #endif  // OS_WIN
+ 
+ std::string SystemUtil::GetServerDirectory() {
++  const char *server_directory_env = Environ::GetEnv("MOZC_SERVER_DIRECTORY");
++  if (server_directory_env) {
++    return server_directory_env;
++  }
++
+ #ifdef OS_WIN
+   DCHECK(SUCCEEDED(Singleton<ProgramFilesX86Cache>::get()->result()));
+ #if defined(GOOGLE_JAPANESE_INPUT_BUILD)
+@@ -469,6 +499,11 @@ std::string SystemUtil::GetToolPath() {
+ }
+ 
+ std::string SystemUtil::GetDocumentDirectory() {
++  const char *documents_directory_env = Environ::GetEnv("MOZC_DOCUMENTS_DIRECTORY");
++  if (documents_directory_env) {
++    return documents_directory_env;
++  }
++
+ #if defined(__APPLE__)
+   return GetServerDirectory();
+ #elif defined(MOZC_DOCUMENT_DIRECTORY)

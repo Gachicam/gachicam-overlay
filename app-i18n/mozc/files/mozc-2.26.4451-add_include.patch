@@ -1,0 +1,37 @@
+diff --git a/src/unix/fcitx5/fcitx5.gyp b/src/unix/fcitx5/fcitx5.gyp
+index 80f09539..a806b21a 100644
+--- a/src/unix/fcitx5/fcitx5.gyp
++++ b/src/unix/fcitx5/fcitx5.gyp
+@@ -75,6 +75,14 @@
+       'target_name': 'fcitx5-mozc',
+       'product_prefix': '',
+       'type': 'loadable_module',
++      'variables': {
++        'target_libs': [
++          'Fcitx5Core',
++          'Fcitx5Config',
++          'Fcitx5Utils',
++          'Fcitx5Module',
++        ],
++      },
+       'sources': [
+         'fcitx_key_translator.cc',
+         'fcitx_key_event_handler.cc',
+@@ -102,6 +110,17 @@
+         '-Wl,--no-undefined',
+         '-Wl,--as-needed',
+       ],
++      'cflags': [
++        '<!@(pkg-config --cflags <@(target_libs))',
++      ],
++      'link_settings': {
++        'libraries': [
++          '<!@(pkg-config --libs-only-l <@(target_libs))',
++        ],
++        'ldflags': [
++          '<!@(pkg-config --libs-only-L <@(target_libs))',
++        ],
++      },
+       'defines': [
+         'FCITX_GETTEXT_DOMAIN="fcitx5-mozc"',
+       ],
