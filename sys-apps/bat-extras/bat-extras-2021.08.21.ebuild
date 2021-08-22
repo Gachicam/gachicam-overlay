@@ -20,16 +20,18 @@ IUSE="+batgrep +batman +batpipe +batwatch +batdiff +prettybat"
 DEPEND=""
 RDEPEND="${DEPEND}
 	sys-apps/bat
-	batman ? ( sys-apps/ripgrep )
+	batman? ( sys-apps/ripgrep )
 "
 
 BDEPEND=""
 
 src_compile() {
-	${S}/build.sh
+	"${S}"/build.sh
 }
 
 src_install() {
+	dodoc README.md LICENSE.md version.txt
+
 	if use batgrep ; then
 		dobin bin/batgrep
 		dodoc doc/batgrep.md
@@ -70,7 +72,7 @@ src_install() {
 pkg_postinst() {
 	optfeature "search through man pages" app-shells/fzf
 	optfeature "entr based batwatch" app-admin/entr
-	optfeature "git-delta based batdiff" sys-apps/git-delta
+	optfeature "git-delta based batdiff" dev-util/git-delta
 	optfeature_header "Install additional packages for formatting with prettybat:"
 	optfeature "JS(X)/TS(X), CSS/SASS/SCSS, Markdown, JSON, YAML, HTML, SVG (by installing prettier via \`npm install -g prettier\`)" "net-libs/nodejs[npm]"
 	optfeature "rust" "dev-lang/rust[rustfmt]"
