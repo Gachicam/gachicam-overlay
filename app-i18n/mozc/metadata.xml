@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person" proxied="yes">
-		<email>yamada.i.yt@gmail.com</email>
-		<name>Gachicam</name>
+		<email>dev@pois.jp</email>
+		<name>pois</name>
 	</maintainer>
 	<use>
 		<flag name="fcitx5">Enable support for <pkg>app-i18n/fcitx5</pkg></flag>
