@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person" proxied="yes">
-		<email>yamada.i.yt@gmail.com</email>
-		<name>Gachicam</name>
+	<maintainer type="person">
+		<email>courser4848@gmail.com</email>
+		<name>xecua</name>
 	</maintainer>
 	<use>
 		<flag name="batgrep">Install batgrep</flag>
