@@ -12,11 +12,11 @@ if [[ "${PV}" == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/google/mozc"
 	EGIT_SUBMODULES=(src/third_party/japanese_usage_dictionary)
 else
-	MOZC_GIT_REVISION="7e2420b6307ef2eb147fdf9b620cb8f1ebea0588"
+	MOZC_GIT_REVISION="1bed73e1090f01f8f93253b302c6284bf7dc89a0"
 	MOZC_DATE="${PV#*_p}"
 	MOZC_DATE="${MOZC_DATE%%_p*}"
 
-	FCITX_MOZC_GIT_REVISION="a92c2699231bd2d3977ac0bb8e8ba34affa6436c"
+	FCITX_MOZC_GIT_REVISION="4820f04a3d3c652cf39c915046a3d667aad9deb5"
 	FCITX_MOZC_DATE="${PV#*_p}"
 	FCITX_MOZC_DATE="${FCITX_MOZC_DATE#*_p}"
 	FCITX_MOZC_DATE="${FCITX_MOZC_DATE%%_p*}"
@@ -159,11 +159,11 @@ src_prepare() {
 
 	pushd "${WORKDIR}/${P}" > /dev/null || die
 
-	eapply "${FILESDIR}/${PN}-2.26.4451-system_abseil-cpp.patch"
-	eapply "${FILESDIR}/${PN}-2.26.4451-system_gtest.patch"
-	eapply "${FILESDIR}/${PN}-2.26.4451-system_jsoncpp.patch"
-	eapply "${FILESDIR}/${PN}-2.26.4451-environmental_variables.patch"
-	eapply "${FILESDIR}/${PN}-2.26.4451-server_path_check.patch"
+	eapply "${FILESDIR}/${PN}-2.26.4493-system_abseil-cpp.patch"
+	eapply "${FILESDIR}/${PN}-2.26.4493-system_gtest.patch"
+	eapply "${FILESDIR}/${PN}-2.26.4493-system_jsoncpp.patch"
+	eapply "${FILESDIR}/${PN}-2.26.4493-environmental_variables.patch"
+	eapply "${FILESDIR}/${PN}-2.26.4493-server_path_check.patch"
 
 	eapply_user
 
