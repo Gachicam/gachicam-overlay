@@ -30,8 +30,6 @@ RDEPEND="app-i18n/fcitx5
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-PATCHES=("${FILESDIR}/${P}-fix-missing-include.patch")
-
 src_prepare() {
 	cmake_src_prepare
 }
