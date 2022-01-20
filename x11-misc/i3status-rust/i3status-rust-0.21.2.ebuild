@@ -111,7 +111,7 @@ CRATES="
 	strsim-0.9.3
 	swayipc-3.0.0
 	swayipc-types-1.0.0
-	syn-1.0.85
+	syn-1.0.86
 	tempfile-3.3.0
 	termtree-0.2.4
 	textwrap-0.11.0
