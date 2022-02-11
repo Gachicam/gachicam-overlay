@@ -1,4 +1,4 @@
-# Copyright 2010-2021 Gentoo Authors
+# Copyright 2010-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -12,9 +12,10 @@ if [[ "${PV}" == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/google/mozc"
 	EGIT_SUBMODULES=(src/third_party/japanese_usage_dictionary)
 else
-	MOZC_GIT_REVISION="1bed73e1090f01f8f93253b302c6284bf7dc89a0"
+	MOZC_GIT_REVISION="7329757e1ad30e327c1ae823a8302c79482d6b9c"
 	MOZC_DATE="${PV#*_p}"
 	MOZC_DATE="${MOZC_DATE%%_p*}"
+	MOZC_VERSION="${PV%%_p*}"
 
 	FCITX_MOZC_GIT_REVISION="4820f04a3d3c652cf39c915046a3d667aad9deb5"
 	FCITX_MOZC_DATE="${PV#*_p}"
@@ -30,10 +31,10 @@ HOMEPAGE="https://github.com/google/mozc"
 if [[ "${PV}" == "9999" ]]; then
 	SRC_URI=""
 else
-	SRC_URI="https://github.com/google/${PN}/archive/${MOZC_GIT_REVISION}.tar.gz -> ${PN}-${PV%%_p*}-${MOZC_DATE}.tar.gz
+	SRC_URI="https://github.com/google/${PN}/archive/${MOZC_GIT_REVISION}.tar.gz -> ${PN}-${MOZC_VERSION}-${MOZC_DATE}.tar.gz
 		https://github.com/hiroyuki-komatsu/japanese-usage-dictionary/archive/${JAPANESE_USAGE_DICTIONARY_GIT_REVISION}.tar.gz -> japanese-usage-dictionary-${JAPANESE_USAGE_DICTIONARY_DATE}.tar.gz
-		fcitx4? ( https://github.com/fcitx/${PN}/archive/${FCITX_MOZC_GIT_REVISION}.tar.gz -> fcitx-${PN}-${PV%%_p*}-${FCITX_MOZC_DATE}.tar.gz )
-		fcitx5? ( https://github.com/fcitx/${PN}/archive/${FCITX_MOZC_GIT_REVISION}.tar.gz -> fcitx-${PN}-${PV%%_p*}-${FCITX_MOZC_DATE}.tar.gz )"
+		fcitx4? ( https://github.com/fcitx/${PN}/archive/${FCITX_MOZC_GIT_REVISION}.tar.gz -> fcitx-${PN}-${MOZC_VERSION}-${FCITX_MOZC_DATE}.tar.gz )
+		fcitx5? ( https://github.com/fcitx/${PN}/archive/${FCITX_MOZC_GIT_REVISION}.tar.gz -> fcitx-${PN}-${MOZC_VERSION}-${FCITX_MOZC_DATE}.tar.gz )"
 fi
 
 # Mozc: BSD
@@ -136,14 +137,14 @@ src_unpack() {
 			git-r3_checkout https://github.com/fcitx/mozc "${WORKDIR}/fcitx-mozc"
 		fi
 	else
-		unpack ${PN}-${PV%%_p*}-${MOZC_DATE}.tar.gz
+		unpack ${PN}-${MOZC_VERSION}-${MOZC_DATE}.tar.gz
 		mv mozc-${MOZC_GIT_REVISION} ${P} || die
 
 		unpack japanese-usage-dictionary-${JAPANESE_USAGE_DICTIONARY_DATE}.tar.gz
 		cp -p japanese-usage-dictionary-${JAPANESE_USAGE_DICTIONARY_GIT_REVISION}/usage_dict.txt ${P}/src/third_party/japanese_usage_dictionary || die
 
 		if use fcitx4 || use fcitx5 ; then
-			unpack fcitx-${PN}-${PV%%_p*}-${FCITX_MOZC_DATE}.tar.gz
+			unpack fcitx-${PN}-${MOZC_VERSION}-${FCITX_MOZC_DATE}.tar.gz
 			mv mozc-${FCITX_MOZC_GIT_REVISION} fcitx-${PN}
 		fi
 	fi
@@ -159,11 +160,11 @@ src_prepare() {
 
 	pushd "${WORKDIR}/${P}" > /dev/null || die
 
-	eapply "${FILESDIR}/${PN}-2.26.4493-system_abseil-cpp.patch"
-	eapply "${FILESDIR}/${PN}-2.26.4493-system_gtest.patch"
-	eapply "${FILESDIR}/${PN}-2.26.4493-system_jsoncpp.patch"
-	eapply "${FILESDIR}/${PN}-2.26.4493-environmental_variables.patch"
-	eapply "${FILESDIR}/${PN}-2.26.4493-server_path_check.patch"
+	eapply "${FILESDIR}/${PN}-${MOZC_VERSION}-system_abseil-cpp.patch"
+	eapply "${FILESDIR}/${PN}-${MOZC_VERSION}-system_gtest.patch"
+	eapply "${FILESDIR}/${PN}-${MOZC_VERSION}-system_jsoncpp.patch"
+	eapply "${FILESDIR}/${PN}-${MOZC_VERSION}-environmental_variables.patch"
+	eapply "${FILESDIR}/${PN}-${MOZC_VERSION}-server_path_check.patch"
 
 	eapply_user
 

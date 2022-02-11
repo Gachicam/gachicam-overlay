@@ -1,5 +1,7 @@
 https://github.com/google/mozc/issues/490
 
+diff --git a/src/gyp/defines.gypi b/src/gyp/defines.gypi
+index 64548f20..44fa74b7 100644
 --- a/src/gyp/defines.gypi
 +++ b/src/gyp/defines.gypi
 @@ -76,6 +76,10 @@

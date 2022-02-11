@@ -1,8 +1,8 @@
 diff --git a/src/base/absl.gyp b/src/base/absl.gyp
-index d9a41dd6..b30a188b 100644
+index 52f2b9f0..9ca73161 100644
 --- a/src/base/absl.gyp
 +++ b/src/base/absl.gyp
-@@ -28,240 +28,510 @@
+@@ -28,246 +28,522 @@
  # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  
  {
@@ -28,7 +28,6 @@ index d9a41dd6..b30a188b 100644
        'toolsets': ['host', 'target'],
 -      'sources': [
 -        '<(absl_srcdir)/base/internal/cycleclock.cc',
--        '<(absl_srcdir)/base/internal/exponential_biased.cc',
 -        '<(absl_srcdir)/base/internal/low_level_alloc.cc',
 -        '<(absl_srcdir)/base/internal/raw_logging.cc',
 -        '<(absl_srcdir)/base/internal/spinlock.cc',
@@ -38,6 +37,7 @@ index d9a41dd6..b30a188b 100644
 -        '<(absl_srcdir)/base/internal/throw_delegate.cc',
 -        '<(absl_srcdir)/base/internal/unscaledcycleclock.cc',
 -        '<(absl_srcdir)/base/log_severity.cc',
+-        '<(absl_srcdir)/profiling/internal/exponential_biased.cc',
 -      ],
 -      'dependencies': [
 -        'absl_hash_internal',
@@ -86,7 +86,7 @@ index d9a41dd6..b30a188b 100644
 +              '<(absl_srcdir)/base/log_severity.cc',
 +
 +              # libabsl_exponential_biased
-+              '<(absl_srcdir)/base/internal/exponential_biased.cc',
++              '<(absl_srcdir)/profiling/internal/exponential_biased.cc',
 +
 +            ],
 +            'dependencies': [
@@ -315,8 +315,7 @@ index d9a41dd6..b30a188b 100644
 -        '<(absl_srcdir)/container/internal/raw_hash_set.cc',
 -        '<(absl_srcdir)/hash/internal/city.cc',
 -        '<(absl_srcdir)/hash/internal/hash.cc',
--        # The OSS version uses Abseil lts_2021_03_24.
--        '<(absl_srcdir)/hash/internal/wyhash.cc',
+-        '<(absl_srcdir)/hash/internal/low_level_hash.cc',
 +      'conditions': [
 +        [
 +          'use_system_abseil_cpp==1',
@@ -325,7 +324,7 @@ index d9a41dd6..b30a188b 100644
 +            'all_dependent_settings': {
 +              'link_settings': {
 +                'libraries': [
-+                  '-labsl_raw_hash_set -labsl_hash -labsl_wyhash',
++                  '-labsl_raw_hash_set -labsl_hash',
 +                ]
 +              }
 +            }
@@ -339,9 +338,7 @@ index d9a41dd6..b30a188b 100644
 +              # libabsl_hash
 +              '<(absl_srcdir)/hash/internal/city.cc',
 +              '<(absl_srcdir)/hash/internal/hash.cc',
-+
-+              # libabsl_wyhash
-+              '<(absl_srcdir)/hash/internal/wyhash.cc',
++              '<(absl_srcdir)/hash/internal/low_level_hash.cc',
 +            ],
 +          }
 +        ],
@@ -393,7 +390,14 @@ index d9a41dd6..b30a188b 100644
 -        '<(absl_srcdir)/strings/internal/charconv_bigint.cc',
 -        '<(absl_srcdir)/strings/internal/charconv_parse.cc',
 -        '<(absl_srcdir)/strings/internal/cord_internal.cc',
+-        '<(absl_srcdir)/strings/internal/cord_rep_btree.cc',
+-        '<(absl_srcdir)/strings/internal/cord_rep_btree_navigator.cc',
+-        '<(absl_srcdir)/strings/internal/cord_rep_btree_reader.cc',
+-        '<(absl_srcdir)/strings/internal/cord_rep_consume.cc',
 -        '<(absl_srcdir)/strings/internal/cord_rep_ring.cc',
+-        '<(absl_srcdir)/strings/internal/cordz_functions.cc',
+-        '<(absl_srcdir)/strings/internal/cordz_handle.cc',
+-        '<(absl_srcdir)/strings/internal/cordz_info.cc',
 -        '<(absl_srcdir)/strings/internal/escaping.cc',
 -        '<(absl_srcdir)/strings/internal/memutil.cc',
 -        '<(absl_srcdir)/strings/internal/str_format/arg.cc',
@@ -415,7 +419,7 @@ index d9a41dd6..b30a188b 100644
 +            'all_dependent_settings': {
 +              'link_settings': {
 +                'libraries': [
-+                  '-labsl_strings -labsl_str_format_internal -labsl_strings_internal -labsl_cord',
++                  '-labsl_strings -labsl_str_format_internal -labsl_strings_internal -labsl_cord -labsl_cordz_functions -labsl_cordz_handle -labsl_cordz_info',
 +                ]
 +              }
 +            }
@@ -442,7 +446,21 @@ index d9a41dd6..b30a188b 100644
 +
 +              # libabsl_cord
 +              '<(absl_srcdir)/strings/internal/cord_internal.cc',
++              '<(absl_srcdir)/strings/internal/cord_rep_btree.cc',
++              '<(absl_srcdir)/strings/internal/cord_rep_btree_navigator.cc',
++              '<(absl_srcdir)/strings/internal/cord_rep_btree_reader.cc',
++              '<(absl_srcdir)/strings/internal/cord_rep_consume.cc',
 +              '<(absl_srcdir)/strings/internal/cord_rep_ring.cc',
++
++              # libabsl_cordz_functions
++              '<(absl_srcdir)/strings/internal/cordz_functions.cc',
++
++              # libabsl_handle
++              '<(absl_srcdir)/strings/internal/cordz_handle.cc',
++
++              # libabsl_info
++              '<(absl_srcdir)/strings/internal/cordz_info.cc',
++
 +            ],
 +            'dependencies': [
 +              'absl_base',
@@ -542,7 +560,7 @@ index d9a41dd6..b30a188b 100644
 +            'all_dependent_settings': {
 +              'link_settings': {
 +                'libraries': [
-+                  'labsl_synchronization -labsl_graphcycles_internal',
++                  '-labsl_synchronization -labsl_graphcycles_internal',
 +                ]
 +              }
 +            }
@@ -694,10 +712,10 @@ index d9a41dd6..b30a188b 100644
      },
    ],
 diff --git a/src/base/base.gyp b/src/base/base.gyp
-index e96c0804..a4b4087b 100644
+index 1e49ff49..af58c4e6 100644
 --- a/src/base/base.gyp
 +++ b/src/base/base.gyp
-@@ -213,6 +213,7 @@
+@@ -218,6 +218,7 @@
        ],
        'dependencies': [
          'absl.gyp:absl_strings',
@@ -706,18 +724,18 @@ index e96c0804..a4b4087b 100644
      },
      {
 diff --git a/src/config/config_test.gyp b/src/config/config_test.gyp
-index 20d4733a..b42bcf4d 100644
+index 3cb251c0..d2cc2a2e 100644
 --- a/src/config/config_test.gyp
 +++ b/src/config/config_test.gyp
-@@ -36,6 +36,7 @@
-         'config_handler_test.cc',
+@@ -37,6 +37,7 @@
        ],
        'dependencies': [
+         '../base/absl.gyp:absl_strings',
 +        '../base/absl.gyp:absl_base',
          '../testing/testing.gyp:gtest_main',
          '../testing/testing.gyp:mozctest',
          'config.gyp:config_handler',
-@@ -80,6 +81,7 @@
+@@ -81,6 +82,7 @@
          'character_form_manager_test.cc',
        ],
        'dependencies': [
@@ -810,10 +828,10 @@ index 073fa7c5..99c261c7 100644
      # Top directory of additional third party libraries.
      'ext_third_party_dir%': '<(abs_depth)/third_party',
 diff --git a/src/session/session_test.gyp b/src/session/session_test.gyp
-index 794e2022..599b461b 100644
+index a6e70921..786964b0 100644
 --- a/src/session/session_test.gyp
 +++ b/src/session/session_test.gyp
-@@ -221,6 +221,7 @@
+@@ -222,6 +222,7 @@
          'internal/key_event_transformer_test.cc',
        ],
        'dependencies': [
