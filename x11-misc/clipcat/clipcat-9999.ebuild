@@ -10,19 +10,18 @@ if [[ ${PV} != *9999* ]]; then
 	# Cannot resolve x11-clipboard...
 	CRATES=""
 
-	inherit cargo
-
 	SRC_URI="
 		https://github.com/xrelkd/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 		$(cargo_crate_uris)
 	"
 	KEYWORDS="~amd64 ~x86"
 else
+	inherit git-r3
 	EGIT_REPO_URI="https://github.com/xrelkd/${PN}"
 	KEYWORDS=""
-
-	inherit cargo git-r3
 fi
+
+inherit cargo
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -44,8 +43,6 @@ src_unpack() {
 src_configure() {
 	cargo_src_configure --features=all
 }
-
-inherit bash-completion-r1
 
 src_install() {
 	cargo_src_install

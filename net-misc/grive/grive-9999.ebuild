@@ -8,10 +8,10 @@ inherit cmake
 if [[ ${PV} = *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/vitalif/${PN}2.git"
+	KEYWORDS=""
 else
-	inherit vcs-snapshot
-	COMMIT="ffb744a59b1496f86ec71581345355715d846f7b"
-	SRC_URI="https://github.com/vitalif/${PN}2/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/vitalif/${PN}2/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 DESCRIPTION="An open source Linux client for Google Drive"
@@ -19,7 +19,6 @@ HOMEPAGE="https://github.com/vitalif/grive2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="

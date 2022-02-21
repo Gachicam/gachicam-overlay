@@ -21,7 +21,6 @@ RDEPEND="${DEPEND}
 
 BDEPEND=""
 
-
 src_compile() {
 	${S}/build.sh
 }
