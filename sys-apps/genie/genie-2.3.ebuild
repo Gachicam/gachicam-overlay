@@ -52,8 +52,9 @@ src_compile() {
 
 src_install() {
 	# make internal-package
-	insopts -m6755
-	dobin binsrc/genie-wrapper/genie
+	exeopts -m6755
+	exeinto /usr/bin
+	newexe binsrc/genie-wrapper/genie genie
 
 	insinto /usr/lib/genie
 	insopts -m755
