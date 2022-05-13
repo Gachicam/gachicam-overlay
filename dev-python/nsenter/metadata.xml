@@ -5,6 +5,9 @@
 		<email>contact@caffeine.page</email>
 		<name>xecua</name>
 	</maintainer>
+	<use>
+		<flag name="cli">Install `nsenter` CLI. Executable is renamed to `nsenter_py` to avoid name conflict.</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">zalando/python-nsenter</remote-id>
 	</upstream>
