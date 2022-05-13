@@ -79,7 +79,7 @@ src_install() {
 	newins othersrc/usr-lib/binfmt.d/WSLInterop.conf WSLInterop.conf
 
 	# make internal-supplement
-	dosym ../../genie/genie/80-genie-envar.sh /usr/lib/systemd/system-environment-generators/80-genie-envar.sh
+	dosym ../../genie/80-genie-envar.sh /usr/lib/systemd/system-environment-generators/80-genie-envar.sh
 	dosym ../../genie/80-genie-envar.sh /usr/lib/systemd/user-environment-generators/80-genie-envar.sh
 	dosym ../wslg-xwayland.socket /usr/lib/systemd/system/sockets.target.wants/wslg-xwayland.socket
 
