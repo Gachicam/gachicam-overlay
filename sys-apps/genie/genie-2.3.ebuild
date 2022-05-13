@@ -44,10 +44,10 @@ src_compile() {
 	# make build-wrapper (make -C genie-wrapper)
 	emake -C genie-wrapper
 	# make build-runinwsl (make -C build-runinwsl)
-	"${EPYTHON}" -m zipapp -o out/runinwsl -c runinwsl
+	"${EPYTHON}" -m zipapp -o out/runinwsl -p "${PYTHON}" -c runinwsl
 	# make build-genie (make -C build-genie)
 	# python3 -m pip install genie/reuqirements.txt --target genie --upgrade
-	"${EPYTHON}" -m zipapp -o out/genie -c genie
+	"${EPYTHON}" -m zipapp -o out/genie -p "${PYTHON}" -c genie
 }
 
 src_install() {
