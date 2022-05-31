@@ -63,7 +63,7 @@ DEPEND=">=dev-cpp/abseil-cpp-20210324
 		virtual/libintl
 	)
 	fcitx5? (
-		app-i18n/fcitx5
+		app-i18n/fcitx:5
 		virtual/libintl
 	)
 	gui? (
@@ -94,7 +94,7 @@ RDEPEND=">=dev-cpp/abseil-cpp-20210324
 		virtual/libintl
 	)
 	fcitx5? (
-		app-i18n/fcitx5
+		app-i18n/fcitx:5
 		virtual/libintl
 	)
 	gui? (
