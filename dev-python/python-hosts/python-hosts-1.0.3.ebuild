@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{5..10} ) # officially tested on ..9, and tested by me on .10
 inherit distutils-r1
 
 DESCRIPTION="a hosts file manager library written in python"
