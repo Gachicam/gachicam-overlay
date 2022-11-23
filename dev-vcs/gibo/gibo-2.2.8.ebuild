@@ -1,22 +1,20 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-DESCRIPTION="fast access to .gitignore boilerplates"
+DESCRIPTION="Easy access to gitignore boilerplates"
 HOMEPAGE="https://github.com/simonwhitaker/gibo"
-SRC_URI="https://github.com/simonwhitaker/gibo/archive/refs/tags/2.2.4.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/simonwhitaker/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Unlicense"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="
+RDEPEND="
 	dev-vcs/git
 	sys-apps/sed
 "
-RDEPEND="${DEPEND}"
-BDEPEND=""
 
 src_install() {
 	dobin gibo
