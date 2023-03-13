@@ -1,0 +1,13 @@
+BDEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
+DEFINED_PHASES=install postinst postrm setup
+DESCRIPTION=Harano Aji Fonts
+EAPI=8
+HOMEPAGE=https://github.com/trueroad/HaranoAjiFonts
+INHERIT=font
+IUSE=X
+KEYWORDS=~amd64 ~x86
+LICENSE=OFL-1.1
+SLOT=0
+SRC_URI=https://github.com/trueroad/HaranoAjiFonts/archive/20230223.tar.gz -> harano-aji-fonts-20230223.tar.gz
+_eclasses_=font	5e03cb70902daa9ff8967c61130f0f60
+_md5_=9cae98aabddf57bd83389be609186ee9
