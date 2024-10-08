@@ -80,7 +80,7 @@ KEYWORDS="~amd64"
 IUSE="X wayland"
 
 RDEPEND="
-		X? ( x11-misc/cxlip )
+		X? ( x11-misc/xclip )
 		wayland? ( gui-apps/wl-clipboard )
 "
 
