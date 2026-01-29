@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>contact@caffeine.page</email>
+		<name>Shiba Shunta</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">abenz1267/walker</remote-id>
+	</upstream>
+</pkgmetadata>

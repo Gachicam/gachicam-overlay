@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>contact@caffeine.page</email>
+		<name>Shiba Shunta</name>
+	</maintainer>
+	<use>
+		<flag name="archlinuxpkgs">Enable archlinuxpkgs builtin provider</flag>
+		<flag name="bluetooth">Enable bluetooth builtin provider</flag>
+		<flag name="bookmarks">Enable bookmarks builtin provider</flag>
+		<flag name="calc">Enable calc builtin provider</flag>
+		<flag name="clipboard">Enable clipboard builtin provider</flag>
+		<flag name="desktopapplications">Enable desktopapplications builtin provider</flag>
+		<flag name="files">Enable files builtin provider</flag>
+		<flag name="menus">Enable menus builtin provider</flag>
+		<flag name="nirisessions">Enable nirisessions builtin provider</flag>
+		<flag name="providerlist">Enable providerlist builtin provider</flag>
+		<flag name="runner">Enable runner builtin provider</flag>
+		<flag name="snippets">Enable snippets builtin provider</flag>
+		<flag name="symbols">Enable symbols builtin provider</flag>
+		<flag name="todo">Enable todo builtin provider</flag>
+		<flag name="unicode">Enable unicode builtin provider</flag>
+		<flag name="websearch">Enable websearch builtin provider</flag>
+		<flag name="windows">Enable windows builtin provider</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">abenz1267/elephant</remote-id>
+	</upstream>
+</pkgmetadata>
