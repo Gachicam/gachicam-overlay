@@ -5,6 +5,10 @@
 		<email>dev@pois.jp</email>
 		<name>pois</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>contact@caffeine.page</email>
+		<name>Shiba Shunta</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="github">savedra1/clipse</remote-id>
 	</upstream>
