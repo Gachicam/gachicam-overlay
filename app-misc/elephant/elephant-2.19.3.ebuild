@@ -25,6 +25,33 @@ PROVIDERS=(
 	"runner" "snippets" "symbols" "todo" "unicode" "websearch" "windows"
 )
 
+# Some providers require additional dependencies not provided by gentoo main repository.
+# 1password requires 1password(gui-apps/1password::guru) and op(app-misc/1password-cli::guru)
+# archlinuxpkgs requires yay or paru
+# bitwarden additionally requires wtype(gui-apps/wtype::guru)
+# bookmarks requires jq(for chrome) and sqlite3(for firefox), but those are optional so we don't add them here.
+# dnfpackages requires dnf(sys-apps/dnf5::guru)
+# niriactions and nirisessions require niri(gui-wm/niri::guru)
+# snippets requires wtype(gui-apps/wtype::guru)
+RDEPEND="
+	bitwarden? (
+		app-admin/rbw
+		gui-apps/wl-clipboard
+	)
+	bluetooth? (net-wireless/bluez)
+	calc? (
+		sci-libs/libqalculate
+		gui-apps/wl-clipboard
+	)
+	clipboard ? (
+		gui-apps/wl-clipboard
+		media-gfx/imagemagick
+	)
+	files? (sys-apps/fd)
+	symbols? (gui-apps/wl-clipboard)
+	unicode? (gui-apps/wl-clipboard)
+"
+
 src_compile() {
 	cd "${S}"/cmd/elephant
 	ego build elephant.go
