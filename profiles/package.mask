@@ -1,0 +1,3 @@
+# not maintained anymore
+x11-misc/i3-workspace-names-daemon
+dev-java/sbt-bin
