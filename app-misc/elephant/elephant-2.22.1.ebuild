@@ -1,7 +1,7 @@
-# Copyright 2025 Gentoo Authors
+# Copyright 2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
 inherit go-module
 
@@ -9,19 +9,24 @@ DESCRIPTION="a powerful data provider service and backend for building custom ap
 HOMEPAGE="https://github.com/abenz1267/elephant"
 SRC_URI="
 	https://github.com/abenz1267/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
-	https://github.com/xecua/distfiles/releases/download/${P}/${P}-vendor.tar.gz
+	https://github.com/xecua/distfiles/releases/download/${P}/${P}-vendor.tar.xz
 "
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
 
-IUSE="archlinuxpkgs +bluetooth +bookmarks +calc +clipboard +desktopapplications +files +menus +nirisessions +providerlist +runner +snippets +symbols +todo +unicode +websearch +windows"
+IUSE="+1password aptpackages archlinuxpkgs +bitwarden +bluetooth +bookmarks +calc +clipboard +desktopapplications dnfpackages +files +menus +niriactions +nirisessions +playerctl +protonpass +providerlist +runner +snippets +symbols +todo +unicode +websearch +windows +wireplumber"
 
 PROVIDERS=(
-	"archlinuxpkgs" "bluetooth" "bookmarks" "calc" "clipboard" "desktopapplications"
-	"files" "menus" "nirisessions" "providerlist" "runner" "snippets" "symbols" "todo" "unicode" "websearch" "windows"
+	"1password" "aptpackages" "archlinuxpkgs" "bitwarden" "bluetooth" "bookmarks" "calc" "clipboard" "desktopapplications"
+	"dnfpackages" "files" "menus" "niriactions" "nirisessions" "playerctl" "protonpass" "providerlist" "runner"
+	"snippets" "symbols" "todo" "unicode" "websearch" "windows" "wireplumber"
 )
+
+BDEPEND="
+	>=dev-lang/go-1.27.1
+"
 
 src_compile() {
 	cd "${S}"/cmd/elephant
